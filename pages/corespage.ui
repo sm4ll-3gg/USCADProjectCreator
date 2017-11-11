@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CoresPage</class>
+ <widget class="QWizardPage" name="CoresPage">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>WizardPage</string>
+  </property>
+  <property name="title">
+   <string>Определение стержней конструкции</string>
+  </property>
+  <property name="subTitle">
+   <string>Введите данные о необходимых стержнях конструкции</string>
+  </property>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

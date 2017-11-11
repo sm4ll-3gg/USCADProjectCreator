@@ -25,10 +25,25 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        projectcreator.cpp
+        projectcreator.cpp \
+    pages/nodespage.cpp \
+    pages/coretypespage.cpp \
+    pages/corespage.cpp \
+    pages/supportspage.cpp \
+    pages/loadspage.cpp
 
 HEADERS += \
-        projectcreator.h
+        projectcreator.h \
+    pages/nodespage.h \
+    pages/coretypespage.h \
+    pages/corespage.h \
+    pages/supportspage.h \
+    pages/loadspage.h
 
 FORMS += \
-    projectcreator.ui
+    projectcreator.ui \
+    pages/nodespage.ui \
+    pages/coretypespage.ui \
+    pages/corespage.ui \
+    pages/supportspage.ui \
+    pages/loadspage.ui

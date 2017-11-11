@@ -6,16 +6,51 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>800</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Wizard</string>
   </property>
-  <widget class="QWizardPage" name="wizardPage1"/>
-  <widget class="QWizardPage" name="wizardPage2"/>
+  <widget class="NodesPage" name="nodesPage"/>
+  <widget class="CoreTypesPage" name="coreTypesPage"/>
+  <widget class="CoresPage" name="coresPage"/>
+  <widget class="SupportsPage" name="supportsPage"/>
+  <widget class="LoadsPage" name="loadsPage"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>CoresPage</class>
+   <extends>QWizardPage</extends>
+   <header>pages/corespage.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>NodesPage</class>
+   <extends>QWizardPage</extends>
+   <header>pages/nodespage.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>CoreTypesPage</class>
+   <extends>QWizardPage</extends>
+   <header>pages/coretypespage.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>SupportsPage</class>
+   <extends>QWizardPage</extends>
+   <header>pages/supportspage.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>LoadsPage</class>
+   <extends>QWizardPage</extends>
+   <header>pages/loadspage.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
