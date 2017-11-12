@@ -27,7 +27,10 @@ LoadsPage::LoadsPage(QWidget *parent) :
 
 bool LoadsPage::validatePage()
 {
-    return !dataWgt->warnEmptyTable("Добавьте хотябы одну нагрузку");
+    if(dataWgt->warnEmptyTable("Добавьте хотябы одну нагрузку"))
+        return false;
+
+    return AbstractPage::validatePage();
 }
 
 void LoadsPage::cbStateChanged(int row, int state)

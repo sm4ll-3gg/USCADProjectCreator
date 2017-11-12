@@ -24,5 +24,5 @@ bool CoreTypesPage::validatePage()
         return false;
 
     coreTypesCount = dataWgt->rowCount();
-    return true;
+    return AbstractPage::validatePage();
 }

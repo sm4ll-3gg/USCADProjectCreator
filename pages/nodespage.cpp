@@ -23,5 +23,5 @@ bool NodesPage::validatePage()
         return false;
 
     nodeCount = dataWgt->rowCount();
-    return true;
+    return AbstractPage::validatePage();
 }

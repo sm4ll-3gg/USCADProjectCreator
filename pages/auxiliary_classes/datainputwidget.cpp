@@ -49,6 +49,11 @@ int DataInputWidget::rowCount() const
     return ui->table->rowCount();
 }
 
+int DataInputWidget::columnCount() const
+{
+    return ui->table->columnCount();
+}
+
 void DataInputWidget::setDelegate(QAbstractItemDelegate *delegate)
 {
     ui->table->setItemDelegate(delegate);
@@ -88,6 +93,11 @@ bool DataInputWidget::warnEmptyTable(const QString &message)
 
     setErrorMessage(message);
     return true;
+}
+
+QVariant DataInputWidget::data(int row, int column) const
+{
+    return ui->table->model()->index(row, column).data();
 }
 
 void DataInputWidget::appendRow()

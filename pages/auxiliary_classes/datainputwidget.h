@@ -22,6 +22,7 @@ public:
     void    setTableHeaders(const QStringList& headers);
 
     int     rowCount() const;
+    int     columnCount() const;
 
     void    setDelegate(QAbstractItemDelegate* delegate);
     void    setDelegateForColumn(int column, QAbstractItemDelegate* delegate);
@@ -32,6 +33,8 @@ public:
     void    resetErrorMessage();
 
     bool    warnEmptyTable(const QString& message);
+
+    QVariant    data(int row, int column) const;
 
 private slots:
     void    appendRow();

@@ -34,5 +34,5 @@ bool CoresPage::validatePage()
         return false;
 
     coresCount = dataWgt->rowCount();
-    return true;
+    return AbstractPage::validatePage();
 }

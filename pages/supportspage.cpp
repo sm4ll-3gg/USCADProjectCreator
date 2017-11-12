@@ -34,5 +34,5 @@ bool SupportsPage::validatePage()
         return false;
 
     supportsCount = dataWgt->rowCount();
-    return true;
+    return AbstractPage::validatePage();
 }

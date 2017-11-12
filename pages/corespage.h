@@ -17,7 +17,6 @@ public:
 
 protected slots:
     void    initializePage() override;
-
     bool    validatePage() override;
 
 private:
