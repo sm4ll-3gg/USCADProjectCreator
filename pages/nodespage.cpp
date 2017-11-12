@@ -12,7 +12,9 @@ NodesPage::NodesPage(QWidget *parent)
            "Введите данные о необходимых узлах",
            "Х и У - координаты узла на плоскости");
 
-    dataWgt->setDelegate(new ValidatorDelegate(new QDoubleValidator{}));
+    QDoubleValidator* v = new QDoubleValidator{};
+    v->setLocale(QLocale::English);
+    dataWgt->setDelegate(new ValidatorDelegate(v));
 
     registerField("node_count", this, "nodeCount");
 }
@@ -30,7 +32,7 @@ QJsonObject NodesPage::serializeObject(int row) const
 {
     QJsonObject obj{};
 
-    obj.insert("index", row);
+    obj.insert("index", row + 1);
     obj.insert("x", dataWgt->data(row, 0).toDouble());
     obj.insert("y", dataWgt->data(row, 1).toDouble());
 

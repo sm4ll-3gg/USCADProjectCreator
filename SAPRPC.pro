@@ -36,7 +36,8 @@ SOURCES += \
     pages/supportspage.cpp \
     main.cpp \
     projectcreator.cpp \
-    pages/abstractpage.cpp
+    pages/abstractpage.cpp \
+    pages/saveprojectpage.cpp
 
 HEADERS += \
     pages/auxiliary_classes/delegates/comboboxdelegate.h \
@@ -51,11 +52,13 @@ HEADERS += \
     pages/supportspage.h \
     declarations.h \
     projectcreator.h \
-    pages/abstractpage.h
+    pages/abstractpage.h \
+    pages/saveprojectpage.h
 
 FORMS += \
     pages/auxiliary_classes/datainputwidget.ui \
-    projectcreator.ui
+    projectcreator.ui \
+    pages/saveprojectpage.ui
 
 SUBDIRS += \
     SAPRPC.pro

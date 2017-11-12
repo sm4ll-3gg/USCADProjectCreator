@@ -16,7 +16,6 @@ public:
     explicit ProjectCreator(QWidget *parent = 0);
     ~ProjectCreator();
 
-private:
     QJsonObject serialize() const;
 
 private:

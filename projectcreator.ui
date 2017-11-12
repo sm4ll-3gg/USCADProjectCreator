@@ -18,6 +18,7 @@
   <widget class="CoresPage" name="coresPage"/>
   <widget class="SupportsPage" name="supportsPage"/>
   <widget class="LoadsPage" name="loadsPage"/>
+  <widget class="SaveProjectPage" name="saveProjectPage"/>
  </widget>
  <customwidgets>
   <customwidget>
@@ -48,6 +49,12 @@
    <class>LoadsPage</class>
    <extends>QWizardPage</extends>
    <header>pages/loadspage.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>SaveProjectPage</class>
+   <extends>QWizardPage</extends>
+   <header>pages/saveprojectpage.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

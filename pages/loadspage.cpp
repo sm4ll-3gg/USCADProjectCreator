@@ -22,7 +22,9 @@ LoadsPage::LoadsPage(QWidget *parent) :
 
     dataWgt->setDelegateForColumn(1, delegate);
 
-    dataWgt->setDelegateForColumn(2, new ValidatorDelegate(new QDoubleValidator{}));
+    QDoubleValidator* v = new QDoubleValidator{};
+    v->setLocale(QLocale::English);
+    dataWgt->setDelegateForColumn(2, new ValidatorDelegate(v));
 }
 
 bool LoadsPage::validatePage()
