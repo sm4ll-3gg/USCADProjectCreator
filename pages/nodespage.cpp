@@ -1,5 +1,6 @@
 #include "nodespage.h"
-#include "ui_nodespage.h"
+
+#include <QVBoxLayout>
 
 NodesPage::NodesPage(QWidget *parent) :
     QWizardPage(parent)

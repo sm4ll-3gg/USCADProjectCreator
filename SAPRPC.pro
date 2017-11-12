@@ -44,8 +44,4 @@ HEADERS += \
 
 FORMS += \
     projectcreator.ui \
-    pages/nodespage.ui \
-    pages/coretypespage.ui \
-    pages/supportspage.ui \
-    pages/loadspage.ui \
     pages/auxiliary_classes/datainputwidget.ui

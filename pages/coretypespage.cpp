@@ -1,5 +1,4 @@
 #include "coretypespage.h"
-#include "ui_coretypespage.h"
 
 #include <QVBoxLayout>
 

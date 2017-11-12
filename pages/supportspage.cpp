@@ -1,5 +1,4 @@
 #include "supportspage.h"
-#include "ui_supportspage.h"
 
 #include "QVBoxLayout"
 

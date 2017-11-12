@@ -37,12 +37,7 @@ void DataInputWidget::setColumnCount(int count)
 
 void DataInputWidget::setTableHeaders(const QStringList &headers)
 {
-    if(headers.size() != ui->table->columnCount())
-        return;
-
-    QHeaderView* hv = ui->table->horizontalHeader();
-    for(int i = 0; i < headers.size(); ++i)
-        hv->model()->setHeaderData(i, Qt::Horizontal, headers.at(i));
+    ui->table->setHorizontalHeaderLabels(headers);
 }
 
 void DataInputWidget::setDelegate(QAbstractItemDelegate *delegate)

@@ -1,5 +1,4 @@
 #include "corespage.h"
-#include "ui_corespage.h"
 
 #include "QVBoxLayout"
 
