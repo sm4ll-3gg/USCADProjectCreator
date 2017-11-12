@@ -12,6 +12,8 @@ SaveProjectPage::SaveProjectPage(QWidget *parent) :
     ui(new Ui::SaveProjectPage)
 {
     ui->setupUi(this);
+
+    ui->errorLabel->hide();
 }
 
 SaveProjectPage::~SaveProjectPage()
@@ -24,6 +26,7 @@ bool SaveProjectPage::validatePage()
     if(path.isEmpty())
     {
         ui->errorLabel->setText("Выберите файл для сохранения!");
+        ui->errorLabel->show();
         return false;
     }
 
@@ -32,6 +35,7 @@ bool SaveProjectPage::validatePage()
     if(!file.open(QIODevice::WriteOnly))
     {
         ui->errorLabel->setText("Ошибка при сохранении файла: " + file.errorString());
+        ui->errorLabel->show();
         return false;
     }
 
@@ -41,6 +45,7 @@ bool SaveProjectPage::validatePage()
     file.write(doc.toJson());
     file.close();
 
+    ui->errorLabel->hide();
     return true;
 }
 
