@@ -1,28 +1,19 @@
 #include "coretypespage.h"
 
+#include "auxiliary_classes/delegates/validatordelegate.h"
+
 #include <QVBoxLayout>
 
 CoreTypesPage::CoreTypesPage(QWidget *parent) :
-    QWizardPage(parent)
+    AbstractPage(3, QStringList{"E", "A", "S"}, parent)
 {
-    setTitle("Определение типов стержней конструкции");
-    setSubTitle("Введите данные о необходимых типах стержней конструкции");
+    initUi("Определение типов стержней конструкции",
+           "Введите данные о необходимых типах стержней конструкции",
+           "E - модуль упругости\n"
+           "A - площадь сечения\n"
+           "S -допускаемое напряжение");
 
-    dataWgt = new DataInputWidget(this);
-    dataWgt->setDescription("E - модуль упругости\n"
-                            "A - площадь сечения\n"
-                            "S -допускаемое напряжение");
+    dataWgt->setDelegate(new ValidatorDelegate(new QDoubleValidator{}));
 
-    dataWgt->setColumnCount(columnCount);
-    dataWgt->setTableHeaders(headers);
-
-    //wgt->setDelegate();
-
-    QVBoxLayout* layout = new QVBoxLayout{};
-    layout->addWidget(dataWgt);
-
-    setLayout(layout);
+    registerField("core_types_count", this, "coreTypesCount");
 }
-
-CoreTypesPage::~CoreTypesPage()
-{}

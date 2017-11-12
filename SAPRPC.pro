@@ -24,24 +24,38 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-        main.cpp \
-        projectcreator.cpp \
-    pages/nodespage.cpp \
-    pages/coretypespage.cpp \
+    pages/auxiliary_classes/delegates/comboboxdelegate.cpp \
+    pages/auxiliary_classes/delegates/validatordelegate.cpp \
+    pages/auxiliary_classes/models/loadsmodel.cpp \
+    pages/auxiliary_classes/models/supportmodel.cpp \
+    pages/auxiliary_classes/datainputwidget.cpp \
     pages/corespage.cpp \
-    pages/supportspage.cpp \
+    pages/coretypespage.cpp \
     pages/loadspage.cpp \
-    pages/auxiliary_classes/datainputwidget.cpp
+    pages/nodespage.cpp \
+    pages/supportspage.cpp \
+    main.cpp \
+    projectcreator.cpp \
+    pages/abstractpage.cpp
 
 HEADERS += \
-        projectcreator.h \
-    pages/nodespage.h \
-    pages/coretypespage.h \
+    pages/auxiliary_classes/delegates/comboboxdelegate.h \
+    pages/auxiliary_classes/delegates/validatordelegate.h \
+    pages/auxiliary_classes/models/loadsmodel.h \
+    pages/auxiliary_classes/models/supportmodel.h \
+    pages/auxiliary_classes/datainputwidget.h \
     pages/corespage.h \
-    pages/supportspage.h \
+    pages/coretypespage.h \
     pages/loadspage.h \
-    pages/auxiliary_classes/datainputwidget.h
+    pages/nodespage.h \
+    pages/supportspage.h \
+    declarations.h \
+    projectcreator.h \
+    pages/abstractpage.h
 
 FORMS += \
-    projectcreator.ui \
-    pages/auxiliary_classes/datainputwidget.ui
+    pages/auxiliary_classes/datainputwidget.ui \
+    projectcreator.ui
+
+SUBDIRS += \
+    SAPRPC.pro

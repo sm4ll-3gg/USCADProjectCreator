@@ -21,8 +21,13 @@ public:
     void    setColumnCount(int count);
     void    setTableHeaders(const QStringList& headers);
 
+    int     rowCount() const;
+
     void    setDelegate(QAbstractItemDelegate* delegate);
     void    setDelegateForColumn(int column, QAbstractItemDelegate* delegate);
+
+    void    setErrorMessage(const QString& message);
+    void    resetErrorMessage();
 
 private slots:
     void    appendRow();

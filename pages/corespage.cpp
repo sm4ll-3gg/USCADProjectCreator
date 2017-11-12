@@ -1,26 +1,20 @@
 #include "corespage.h"
 
-#include "QVBoxLayout"
+#include "auxiliary_classes/delegates/validatordelegate.h"
 
-CoresPage::CoresPage(QWidget *parent) :
-    QWizardPage(parent)
+CoresPage::CoresPage(QWidget *parent)
+    : AbstractPage(3, QStringList{"NBegin", "NEnd", "Type"}, parent)
 {
-    setTitle("Определение стержней конструкции");
-    setSubTitle("Введите данные о необходимых стержнях конструкции в таблицу ниже");
+    initUi("Определение стержней конструкции",
+           "Введите данные о необходимых стержнях конструкции в таблицу ниже",
+           "NBegin и NEnd - номера узлов начала и конца стержня соответственно\n"
+           "Type - номер типа стержня, определенный ранее");
 
-    dataWgt = new DataInputWidget(this);
-    dataWgt->setDescription("NBegin и NEnd - номера узлов начала и конца стержня соответственно\n"
-                            "Type - номер типа стержня, определенный ранее");
 
-    dataWgt->setColumnCount(columnCount);
-    dataWgt->setTableHeaders(headers);
-
-    //wgt->setDelegate();
-
-    QVBoxLayout* layout = new QVBoxLayout{};
-    layout->addWidget(dataWgt);
-
-    setLayout(layout);
+    ValidatorDelegate* nodes = new ValidatorDelegate(new QIntValidator(1, 10)); // Nodes count
+    dataWgt->setDelegateForColumn(0, nodes);
+    dataWgt->setDelegateForColumn(1, nodes);
+    dataWgt->setDelegateForColumn(2, new ValidatorDelegate(new QIntValidator{}));
 }
 
 CoresPage::~CoresPage()

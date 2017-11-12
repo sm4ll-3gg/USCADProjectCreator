@@ -1,23 +1,20 @@
 #include "supportspage.h"
 
-#include "QVBoxLayout"
+#include "auxiliary_classes/models/supportmodel.h"
 
-SupportsPage::SupportsPage(QWidget *parent) :
-    QWizardPage(parent)
+#include "auxiliary_classes/delegates/validatordelegate.h"
+#include "auxiliary_classes/delegates/comboboxdelegate.h"
+
+#include <QVBoxLayout>
+
+SupportsPage::SupportsPage(QWidget *parent)
+    : AbstractPage(2, QStringList{"Node", "Type"}, parent)
 {
-    setTitle("Определение опор конструкции");
-    setSubTitle("Введите кинематические ограничения (опоры) для узлов конструкции");
+    initUi("Определение опор конструкции",
+           "Введите кинематические ограничения (опоры) для узлов конструкции",
+           "Node - номер узла, к которому относится опора\n"
+           "Type - тип опоры");
 
-    dataWgt = new DataInputWidget(this);
-    dataWgt->setDescription("Node - номер узла, к которому относится опора\nType - тип опоры");
-
-    dataWgt->setColumnCount(columnCount);
-    dataWgt->setTableHeaders(headers);
-
-    //wgt->setDelegate();
-
-    QVBoxLayout* layout = new QVBoxLayout{};
-    layout->addWidget(dataWgt);
-
-    setLayout(layout);
+    dataWgt->setDelegateForColumn(1, new ComboBoxDelegate(new SupportModel{}));
+    dataWgt->setDelegateForColumn(0, new ValidatorDelegate(new QIntValidator(0, 10)));
 }

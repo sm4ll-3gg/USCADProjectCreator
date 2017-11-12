@@ -1,26 +1,33 @@
 #include "nodespage.h"
 
+#include "auxiliary_classes/delegates/validatordelegate.h"
+
 #include <QVBoxLayout>
+#include <QDebug>
 
-NodesPage::NodesPage(QWidget *parent) :
-    QWizardPage(parent)
+NodesPage::NodesPage(QWidget *parent)
+    : AbstractPage(2, QStringList{"X", "Y"}, parent)
 {
-    setTitle("Определение узлов конструкции");
-    setSubTitle("Введите данные о необходимых узлах");
+    initUi("Определение узлов конструкции",
+           "Введите данные о необходимых узлах",
+           "Х и У - координаты узла на плоскости");
 
-    DataWgt = new DataInputWidget(this);
-    DataWgt->setDescription("Х и У - координаты узла на плоскости");
+    dataWgt->setDelegate(new ValidatorDelegate(new QIntValidator{}));
 
-    DataWgt->setColumnCount(columnCount);
-    DataWgt->setTableHeaders(header);
-
-    //wgt->setDelegate();
-
-    QVBoxLayout* layout = new QVBoxLayout{};
-    layout->addWidget(DataWgt);
-
-    setLayout(layout);
+    registerField("node_count", this, "nodeCount");
 }
 
 NodesPage::~NodesPage()
 {}
+
+bool NodesPage::validatePage()
+{
+    nodeCount = dataWgt->rowCount();
+    if(nodeCount == 0)
+    {
+        dataWgt->setErrorMessage("Добавьте хотябы один узел");
+        return false;
+    }
+
+    return true;
+}

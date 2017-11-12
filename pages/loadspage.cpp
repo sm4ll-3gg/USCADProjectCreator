@@ -1,25 +1,19 @@
 #include "loadspage.h"
 
-#include <QVBoxLayout>
+#include "auxiliary_classes/models/loadsmodel.h"
+
+#include "auxiliary_classes/delegates/comboboxdelegate.h"
+#include "auxiliary_classes/delegates/validatordelegate.h"
 
 LoadsPage::LoadsPage(QWidget *parent) :
-    QWizardPage(parent)
+    AbstractPage(2, QStringList{"Index", "Type"}, parent)
 {
-    setTitle("Определение нагрузок");
-    setSubTitle("Введите данные о нагрузках");
+    initUi("Определение нагрузок",
+           "Введите данные о нагрузках",
+           "Index - номер узла(если нагрузка сосредоточенная) или "
+           "стержня(если нагрузка распределенная), к которому приложена нагрузка"
+           "\nType - тип нагрузки");
 
-    dataWgt = new DataInputWidget(this);
-    dataWgt->setDescription("Index - номер узла(если нагрузка сосредоточенная) или "
-                            "стержня(если нагрузка распределенная), к которому приложена нагрузка"
-                            "\nType - тип нагрузки");
-
-    dataWgt->setColumnCount(columnCount);
-    dataWgt->setTableHeaders(headers);
-
-    //wgt->setDelegate();
-
-    QVBoxLayout* layout = new QVBoxLayout{};
-    layout->addWidget(dataWgt);
-
-    setLayout(layout);
+    dataWgt->setDelegateForColumn(0, new ValidatorDelegate(new QIntValidator(0, 10)));
+    dataWgt->setDelegateForColumn(1, new ComboBoxDelegate(new LoadsModel{}));
 }

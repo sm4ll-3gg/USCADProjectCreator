@@ -10,6 +10,8 @@ DataInputWidget::DataInputWidget(QWidget *parent) :
     ui->setupUi(this);
 
     setColumnCount(2);
+
+    ui->errorLabel->hide();
 }
 
 DataInputWidget::~DataInputWidget()
@@ -40,6 +42,11 @@ void DataInputWidget::setTableHeaders(const QStringList &headers)
     ui->table->setHorizontalHeaderLabels(headers);
 }
 
+int DataInputWidget::rowCount() const
+{
+    return ui->table->rowCount();
+}
+
 void DataInputWidget::setDelegate(QAbstractItemDelegate *delegate)
 {
     ui->table->setItemDelegate(delegate);
@@ -48,6 +55,18 @@ void DataInputWidget::setDelegate(QAbstractItemDelegate *delegate)
 void DataInputWidget::setDelegateForColumn(int column, QAbstractItemDelegate *delegate)
 {
     ui->table->setItemDelegateForColumn(column, delegate);
+}
+
+void DataInputWidget::setErrorMessage(const QString &message)
+{
+    ui->errorLabel->setText(message);
+    ui->errorLabel->show();
+}
+
+void DataInputWidget::resetErrorMessage()
+{
+    ui->errorLabel->setText("");
+    ui->errorLabel->hide();
 }
 
 void DataInputWidget::appendRow()

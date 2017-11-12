@@ -1,23 +1,20 @@
 #ifndef CORETYPESPAGE_H
 #define CORETYPESPAGE_H
 
-#include "auxiliary_classes/datainputwidget.h"
+#include "abstractpage.h"
 
-#include <QWizardPage>
-
-class CoreTypesPage : public QWizardPage
+class CoreTypesPage : public AbstractPage
 {
     Q_OBJECT
 
+    Q_PROPERTY(int coreTypesCount MEMBER coreTypesCount)
+
 public:
     explicit CoreTypesPage(QWidget *parent = 0);
-    ~CoreTypesPage();
+    ~CoreTypesPage() {}
 
 private:
-    DataInputWidget*    dataWgt;
-
-    const int           columnCount = 3;
-    const QStringList   headers{"E", "A", "S"};
+    int coreTypesCount{0};
 };
 
 #endif // CORETYPESPAGE_H

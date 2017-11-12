@@ -1,23 +1,23 @@
 #ifndef NODESPAGE_H
 #define NODESPAGE_H
 
-#include "auxiliary_classes/datainputwidget.h"
+#include "abstractpage.h"
 
-#include <QWizardPage>
-
-class NodesPage : public QWizardPage
+class NodesPage : public AbstractPage
 {
     Q_OBJECT
+
+    Q_PROPERTY(int nodeCount MEMBER nodeCount)
 
 public:
     explicit NodesPage(QWidget *parent = 0);
     ~NodesPage();
 
-private:
-    DataInputWidget*    DataWgt;
+public slots:
+    bool    validatePage() override;
 
-    const int           columnCount = 2;
-    const QStringList   header{"X", "Y"};
+private:
+    int nodeCount{0};
 };
 
 #endif // NODESPAGE_H
