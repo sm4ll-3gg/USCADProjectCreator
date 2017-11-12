@@ -12,22 +12,16 @@ NodesPage::NodesPage(QWidget *parent)
            "Введите данные о необходимых узлах",
            "Х и У - координаты узла на плоскости");
 
-    dataWgt->setDelegate(new ValidatorDelegate(new QIntValidator{}));
+    dataWgt->setDelegate(new ValidatorDelegate(new QDoubleValidator{}));
 
     registerField("node_count", this, "nodeCount");
 }
 
-NodesPage::~NodesPage()
-{}
-
 bool NodesPage::validatePage()
 {
-    nodeCount = dataWgt->rowCount();
-    if(nodeCount == 0)
-    {
-        dataWgt->setErrorMessage("Добавьте хотябы один узел");
+    if(dataWgt->warnEmptyTable("Добавьте хотябы один узел"))
         return false;
-    }
 
+    nodeCount = dataWgt->rowCount();
     return true;
 }

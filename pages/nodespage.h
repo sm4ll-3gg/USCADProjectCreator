@@ -11,7 +11,7 @@ class NodesPage : public AbstractPage
 
 public:
     explicit NodesPage(QWidget *parent = 0);
-    ~NodesPage();
+    ~NodesPage() {}
 
 public slots:
     bool    validatePage() override;

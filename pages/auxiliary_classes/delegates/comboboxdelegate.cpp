@@ -7,9 +7,14 @@ ComboBoxDelegate::ComboBoxDelegate(QAbstractListModel* model, QObject *parent)
 {}
 
 QWidget *ComboBoxDelegate::createEditor(QWidget* parent, const QStyleOptionViewItem&,
-                                        const QModelIndex&) const
+                                        const QModelIndex& index) const
 {
     QComboBox* editor = new QComboBox(parent);
+
+//    connect(editor, &QComboBox::currentIndexChanged, [=] (int state) {
+//        emit sgStateChanged(index.row(), state);
+//    });
+
     editor->setModel(model);
 
     return editor;

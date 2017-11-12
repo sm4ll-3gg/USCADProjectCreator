@@ -17,3 +17,12 @@ CoreTypesPage::CoreTypesPage(QWidget *parent) :
 
     registerField("core_types_count", this, "coreTypesCount");
 }
+
+bool CoreTypesPage::validatePage()
+{
+    if(dataWgt->warnEmptyTable("Добавьте хотябы один тип стержня"))
+        return false;
+
+    coreTypesCount = dataWgt->rowCount();
+    return true;
+}

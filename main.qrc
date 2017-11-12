@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>ProjectFileStructure.md</file>
+    </qresource>
+</RCC>

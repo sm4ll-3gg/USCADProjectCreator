@@ -59,3 +59,6 @@ FORMS += \
 
 SUBDIRS += \
     SAPRPC.pro
+
+RESOURCES += \
+    main.qrc

@@ -9,9 +9,19 @@ class CoresPage : public AbstractPage
 {
     Q_OBJECT
 
+    Q_PROPERTY(int coresCount MEMBER coresCount)
+
 public:
     explicit CoresPage(QWidget *parent = 0);
-    ~CoresPage();
+    ~CoresPage() {}
+
+protected slots:
+    void    initializePage() override;
+
+    bool    validatePage() override;
+
+private:
+    int coresCount{0};
 };
 
 #endif // CORESPAGE_H

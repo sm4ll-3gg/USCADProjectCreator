@@ -2,6 +2,7 @@
 #include "ui_datainputwidget.h"
 
 #include <QDebug>
+#include <QLineEdit>
 
 DataInputWidget::DataInputWidget(QWidget *parent) :
     QWidget(parent),
@@ -9,6 +10,7 @@ DataInputWidget::DataInputWidget(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    ui->table->setRowCount(1);
     setColumnCount(2);
 
     ui->errorLabel->hide();
@@ -57,6 +59,16 @@ void DataInputWidget::setDelegateForColumn(int column, QAbstractItemDelegate *de
     ui->table->setItemDelegateForColumn(column, delegate);
 }
 
+void DataInputWidget::setItemValidator(int row, int column, QValidator *validator)
+{
+    QLineEdit* editor = qobject_cast<QLineEdit*> (ui->table->cellWidget(row, column));
+
+    if(!editor)
+        return;
+
+    editor->setValidator(validator);
+}
+
 void DataInputWidget::setErrorMessage(const QString &message)
 {
     ui->errorLabel->setText(message);
@@ -67,6 +79,15 @@ void DataInputWidget::resetErrorMessage()
 {
     ui->errorLabel->setText("");
     ui->errorLabel->hide();
+}
+
+bool DataInputWidget::warnEmptyTable(const QString &message)
+{
+    if(ui->table->rowCount() != 0)
+        return false;
+
+    setErrorMessage(message);
+    return true;
 }
 
 void DataInputWidget::appendRow()

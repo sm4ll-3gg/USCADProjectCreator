@@ -26,8 +26,12 @@ public:
     void    setDelegate(QAbstractItemDelegate* delegate);
     void    setDelegateForColumn(int column, QAbstractItemDelegate* delegate);
 
+    void    setItemValidator(int row, int column, QValidator* validator);
+
     void    setErrorMessage(const QString& message);
     void    resetErrorMessage();
+
+    bool    warnEmptyTable(const QString& message);
 
 private slots:
     void    appendRow();

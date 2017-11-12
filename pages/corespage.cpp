@@ -10,12 +10,29 @@ CoresPage::CoresPage(QWidget *parent)
            "NBegin и NEnd - номера узлов начала и конца стержня соответственно\n"
            "Type - номер типа стержня, определенный ранее");
 
-
-    ValidatorDelegate* nodes = new ValidatorDelegate(new QIntValidator(1, 10)); // Nodes count
-    dataWgt->setDelegateForColumn(0, nodes);
-    dataWgt->setDelegateForColumn(1, nodes);
-    dataWgt->setDelegateForColumn(2, new ValidatorDelegate(new QIntValidator{}));
+    registerField("cores_count", this, "coresCount");
 }
 
-CoresPage::~CoresPage()
-{}
+void CoresPage::initializePage()
+{
+    int nodesCount = field("node_count").toInt();
+    QIntValidator* nodesValidator = new QIntValidator(1, nodesCount);
+    ValidatorDelegate* nodes = new ValidatorDelegate(nodesValidator);
+
+    dataWgt->setDelegateForColumn(0, nodes);
+    dataWgt->setDelegateForColumn(1, nodes);
+
+    int coreTypesCount = field("core_types_count").toInt();
+    QIntValidator* ctv = new QIntValidator(1, coreTypesCount);
+
+    dataWgt->setDelegateForColumn(2, new ValidatorDelegate(ctv));
+}
+
+bool CoresPage::validatePage()
+{
+    if(dataWgt->warnEmptyTable("Добавьте хотябы один стержень"))
+        return false;
+
+    coresCount = dataWgt->rowCount();
+    return true;
+}

@@ -13,6 +13,9 @@ public:
     explicit CoreTypesPage(QWidget *parent = 0);
     ~CoreTypesPage() {}
 
+protected slots:
+    bool    validatePage() override;
+
 private:
     int coreTypesCount{0};
 };

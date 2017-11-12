@@ -16,5 +16,23 @@ SupportsPage::SupportsPage(QWidget *parent)
            "Type - тип опоры");
 
     dataWgt->setDelegateForColumn(1, new ComboBoxDelegate(new SupportModel{}));
-    dataWgt->setDelegateForColumn(0, new ValidatorDelegate(new QIntValidator(0, 10)));
+
+    registerField("supports_count", this, "supportsCount");
+}
+
+void SupportsPage::initializePage()
+{
+    int nodeCount = field("node_count").toInt();
+    QIntValidator* validator = new QIntValidator(1, nodeCount);
+
+    dataWgt->setDelegateForColumn(0, new ValidatorDelegate(validator));
+}
+
+bool SupportsPage::validatePage()
+{
+    if(dataWgt->warnEmptyTable("Добавьте хотябы одну опору"))
+        return false;
+
+    supportsCount = dataWgt->rowCount();
+    return true;
 }

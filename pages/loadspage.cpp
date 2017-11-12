@@ -6,14 +6,40 @@
 #include "auxiliary_classes/delegates/validatordelegate.h"
 
 LoadsPage::LoadsPage(QWidget *parent) :
-    AbstractPage(2, QStringList{"Index", "Type"}, parent)
+    AbstractPage(3, QStringList{"Index", "Type", "Value"}, parent)
 {
     initUi("Определение нагрузок",
            "Введите данные о нагрузках",
            "Index - номер узла(если нагрузка сосредоточенная) или "
-           "стержня(если нагрузка распределенная), к которому приложена нагрузка"
-           "\nType - тип нагрузки");
+           "стержня(если нагрузка распределенная), к которому приложена нагрузка\n"
+           "Type - тип нагрузки\n"
+           "Value - значение нагрузки");
 
-    dataWgt->setDelegateForColumn(0, new ValidatorDelegate(new QIntValidator(0, 10)));
-    dataWgt->setDelegateForColumn(1, new ComboBoxDelegate(new LoadsModel{}));
+    dataWgt->setDelegateForColumn(0, new ValidatorDelegate(new QIntValidator{}));
+
+    ComboBoxDelegate* delegate = new ComboBoxDelegate(new LoadsModel{});
+    connect(delegate, &ComboBoxDelegate::sgStateChanged, this, &LoadsPage::cbStateChanged);
+
+    dataWgt->setDelegateForColumn(1, delegate);
+
+    dataWgt->setDelegateForColumn(2, new ValidatorDelegate(new QDoubleValidator{}));
+}
+
+bool LoadsPage::validatePage()
+{
+    return !dataWgt->warnEmptyTable("Добавьте хотябы одну нагрузку");
+}
+
+void LoadsPage::cbStateChanged(int row, int state)
+{
+    QIntValidator* validator = new QIntValidator{};
+
+    int max = 0;
+    if(state == PrDeclarations::CONCENTRATED)
+        max = field("node_count").toInt();
+    else if(state == PrDeclarations::DISTRIBUTED)
+        max = field("corse_count").toInt();
+
+    validator->setRange(1, max);
+    dataWgt->setItemValidator(row, 0, validator);
 }
