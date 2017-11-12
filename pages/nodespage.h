@@ -1,11 +1,9 @@
 #ifndef NODESPAGE_H
 #define NODESPAGE_H
 
-#include <QWizardPage>
+#include "auxiliary_classes/datainputwidget.h"
 
-namespace Ui {
-class NodesPage;
-}
+#include <QWizardPage>
 
 class NodesPage : public QWizardPage
 {
@@ -16,7 +14,10 @@ public:
     ~NodesPage();
 
 private:
-    Ui::NodesPage *ui;
+    DataInputWidget*    DataWgt;
+
+    const int           columnCount = 2;
+    const QStringList   header{"X", "Y"};
 };
 
 #endif // NODESPAGE_H

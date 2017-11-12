@@ -2,13 +2,24 @@
 #include "ui_nodespage.h"
 
 NodesPage::NodesPage(QWidget *parent) :
-    QWizardPage(parent),
-    ui(new Ui::NodesPage)
+    QWizardPage(parent)
 {
-    ui->setupUi(this);
+    setTitle("Определение узлов конструкции");
+    setSubTitle("Введите данные о необходимых узлах");
+
+    DataWgt = new DataInputWidget(this);
+    DataWgt->setDescription("Х и У - координаты узла на плоскости");
+
+    DataWgt->setColumnCount(columnCount);
+    DataWgt->setTableHeaders(header);
+
+    //wgt->setDelegate();
+
+    QVBoxLayout* layout = new QVBoxLayout{};
+    layout->addWidget(DataWgt);
+
+    setLayout(layout);
 }
 
 NodesPage::~NodesPage()
-{
-    delete ui;
-}
+{}

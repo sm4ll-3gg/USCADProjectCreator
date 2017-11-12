@@ -1,14 +1,26 @@
 #include "loadspage.h"
 #include "ui_loadspage.h"
 
-LoadsPage::LoadsPage(QWidget *parent) :
-    QWizardPage(parent),
-    ui(new Ui::LoadsPage)
-{
-    ui->setupUi(this);
-}
+#include <QVBoxLayout>
 
-LoadsPage::~LoadsPage()
+LoadsPage::LoadsPage(QWidget *parent) :
+    QWizardPage(parent)
 {
-    delete ui;
+    setTitle("Определение нагрузок");
+    setSubTitle("Введите данные о нагрузках");
+
+    dataWgt = new DataInputWidget(this);
+    dataWgt->setDescription("Index - номер узла(если нагрузка сосредоточенная) или "
+                            "стержня(если нагрузка распределенная), к которому приложена нагрузка"
+                            "\nType - тип нагрузки");
+
+    dataWgt->setColumnCount(columnCount);
+    dataWgt->setTableHeaders(headers);
+
+    //wgt->setDelegate();
+
+    QVBoxLayout* layout = new QVBoxLayout{};
+    layout->addWidget(dataWgt);
+
+    setLayout(layout);
 }

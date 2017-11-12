@@ -1,14 +1,24 @@
 #include "supportspage.h"
 #include "ui_supportspage.h"
 
-SupportsPage::SupportsPage(QWidget *parent) :
-    QWizardPage(parent),
-    ui(new Ui::SupportsPage)
-{
-    ui->setupUi(this);
-}
+#include "QVBoxLayout"
 
-SupportsPage::~SupportsPage()
+SupportsPage::SupportsPage(QWidget *parent) :
+    QWizardPage(parent)
 {
-    delete ui;
+    setTitle("Определение опор конструкции");
+    setSubTitle("Введите кинематические ограничения (опоры) для узлов конструкции");
+
+    dataWgt = new DataInputWidget(this);
+    dataWgt->setDescription("Node - номер узла, к которому относится опора\nType - тип опоры");
+
+    dataWgt->setColumnCount(columnCount);
+    dataWgt->setTableHeaders(headers);
+
+    //wgt->setDelegate();
+
+    QVBoxLayout* layout = new QVBoxLayout{};
+    layout->addWidget(dataWgt);
+
+    setLayout(layout);
 }

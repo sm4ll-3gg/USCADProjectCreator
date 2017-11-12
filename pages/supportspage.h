@@ -1,6 +1,8 @@
 #ifndef SUPPORTSPAGE_H
 #define SUPPORTSPAGE_H
 
+#include "auxiliary_classes/datainputwidget.h"
+
 #include <QWizardPage>
 
 namespace Ui {
@@ -13,10 +15,13 @@ class SupportsPage : public QWizardPage
 
 public:
     explicit SupportsPage(QWidget *parent = 0);
-    ~SupportsPage();
+    ~SupportsPage() {}
 
 private:
-    Ui::SupportsPage *ui;
+    DataInputWidget*    dataWgt;
+
+    const int           columnCount = 2;
+    const QStringList   headers{"Node", "Type"};
 };
 
 #endif // SUPPORTSPAGE_H

@@ -1,6 +1,8 @@
 #ifndef CORESPAGE_H
 #define CORESPAGE_H
 
+#include "auxiliary_classes/datainputwidget.h"
+
 #include <QWizardPage>
 
 namespace Ui {
@@ -16,7 +18,10 @@ public:
     ~CoresPage();
 
 private:
-    Ui::CoresPage *ui;
+    DataInputWidget* dataWgt;
+
+    const int           columnCount = 3;
+    const QStringList   headers{"NBegin", "NEnd", "Type"};
 };
 
 #endif // CORESPAGE_H

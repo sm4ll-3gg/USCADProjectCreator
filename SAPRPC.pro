@@ -30,7 +30,8 @@ SOURCES += \
     pages/coretypespage.cpp \
     pages/corespage.cpp \
     pages/supportspage.cpp \
-    pages/loadspage.cpp
+    pages/loadspage.cpp \
+    pages/auxiliary_classes/datainputwidget.cpp
 
 HEADERS += \
         projectcreator.h \
@@ -38,12 +39,13 @@ HEADERS += \
     pages/coretypespage.h \
     pages/corespage.h \
     pages/supportspage.h \
-    pages/loadspage.h
+    pages/loadspage.h \
+    pages/auxiliary_classes/datainputwidget.h
 
 FORMS += \
     projectcreator.ui \
     pages/nodespage.ui \
     pages/coretypespage.ui \
-    pages/corespage.ui \
     pages/supportspage.ui \
-    pages/loadspage.ui
+    pages/loadspage.ui \
+    pages/auxiliary_classes/datainputwidget.ui

@@ -1,11 +1,9 @@
 #ifndef CORETYPESPAGE_H
 #define CORETYPESPAGE_H
 
-#include <QWizardPage>
+#include "auxiliary_classes/datainputwidget.h"
 
-namespace Ui {
-class CoreTypesPage;
-}
+#include <QWizardPage>
 
 class CoreTypesPage : public QWizardPage
 {
@@ -16,7 +14,10 @@ public:
     ~CoreTypesPage();
 
 private:
-    Ui::CoreTypesPage *ui;
+    DataInputWidget*    dataWgt;
+
+    const int           columnCount = 3;
+    const QStringList   headers{"E", "A", "S"};
 };
 
 #endif // CORETYPESPAGE_H

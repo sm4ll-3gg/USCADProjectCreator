@@ -1,11 +1,9 @@
 #ifndef LOADSPAGE_H
 #define LOADSPAGE_H
 
-#include <QWizardPage>
+#include "auxiliary_classes/datainputwidget.h"
 
-namespace Ui {
-class LoadsPage;
-}
+#include <QWizardPage>
 
 class LoadsPage : public QWizardPage
 {
@@ -13,10 +11,13 @@ class LoadsPage : public QWizardPage
 
 public:
     explicit LoadsPage(QWidget *parent = 0);
-    ~LoadsPage();
+    ~LoadsPage() {}
 
 private:
-    Ui::LoadsPage *ui;
+    DataInputWidget* dataWgt;
+
+    const int           columnCount = 2;
+    const QStringList   headers{"Index", "Type"};
 };
 
 #endif // LOADSPAGE_H
