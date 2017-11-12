@@ -19,6 +19,9 @@ protected:
     bool    validatePage() override;
 
 private:
+    QJsonObject serializeObject(int row) const override;
+
+private:
     int supportsCount;
 };
 

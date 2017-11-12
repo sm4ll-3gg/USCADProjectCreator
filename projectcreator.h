@@ -1,6 +1,7 @@
 #ifndef PROJECTCREATOR_H
 #define PROJECTCREATOR_H
 
+#include <QJsonObject>
 #include <QWizard>
 
 namespace Ui {
@@ -14,6 +15,9 @@ class ProjectCreator : public QWizard
 public:
     explicit ProjectCreator(QWidget *parent = 0);
     ~ProjectCreator();
+
+private:
+    QJsonObject serialize() const;
 
 private:
     Ui::ProjectCreator *ui;

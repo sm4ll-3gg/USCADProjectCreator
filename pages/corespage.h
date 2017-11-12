@@ -19,6 +19,9 @@ protected slots:
     void    initializePage() override;
     bool    validatePage() override;
 
+private: // Methods
+    QJsonObject serializeObject(int row) const override;
+
 private:
     int coresCount{0};
 };

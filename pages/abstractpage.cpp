@@ -6,6 +6,16 @@ AbstractPage::AbstractPage(const int columnCount, const QStringList& labels, QWi
     : QWizardPage(parent), columnCount(columnCount), labels(labels)
 {}
 
+QJsonArray AbstractPage::serialize() const
+{
+    QJsonArray result{};
+
+    for(int i = 0; i < dataWgt->rowCount(); ++i)
+        result.append(serializeObject(i));
+
+    return result;
+}
+
 bool AbstractPage::validatePage()
 {
     if(!isDataValid())

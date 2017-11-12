@@ -14,6 +14,9 @@ public:
 protected slots:
     bool    validatePage() override;
 
+private: // Methods
+    QJsonObject serializeObject(int row) const override;
+
 private:
     void    cbStateChanged(int row, int state);
 };

@@ -16,6 +16,9 @@ public:
 public slots:
     bool    validatePage() override;
 
+private: // Methods
+    QJsonObject serializeObject(int row) const override;
+
 private:
     int nodeCount{0};
 };

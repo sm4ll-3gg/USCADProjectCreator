@@ -36,3 +36,13 @@ bool SupportsPage::validatePage()
     supportsCount = dataWgt->rowCount();
     return AbstractPage::validatePage();
 }
+
+QJsonObject SupportsPage::serializeObject(int row) const
+{
+    QJsonObject obj{};
+
+    obj.insert("node", dataWgt->data(row, 0).toInt());
+    obj.insert("type", dataWgt->data(row, 1).toInt());
+
+    return obj;
+}

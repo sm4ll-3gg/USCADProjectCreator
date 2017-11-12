@@ -33,6 +33,17 @@ bool LoadsPage::validatePage()
     return AbstractPage::validatePage();
 }
 
+QJsonObject LoadsPage::serializeObject(int row) const
+{
+    QJsonObject obj{};
+
+    obj.insert("index", dataWgt->data(row, 0).toInt());
+    obj.insert("type", dataWgt->data(row, 1).toInt());
+    obj.insert("value", dataWgt->data(row, 2).toDouble());
+
+    return obj;
+}
+
 void LoadsPage::cbStateChanged(int row, int state)
 {
     QIntValidator* validator = new QIntValidator{};

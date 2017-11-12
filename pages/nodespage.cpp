@@ -25,3 +25,14 @@ bool NodesPage::validatePage()
     nodeCount = dataWgt->rowCount();
     return AbstractPage::validatePage();
 }
+
+QJsonObject NodesPage::serializeObject(int row) const
+{
+    QJsonObject obj{};
+
+    obj.insert("index", row);
+    obj.insert("x", dataWgt->data(row, 0).toDouble());
+    obj.insert("y", dataWgt->data(row, 1).toDouble());
+
+    return obj;
+}

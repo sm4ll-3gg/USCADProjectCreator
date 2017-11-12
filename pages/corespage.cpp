@@ -36,3 +36,15 @@ bool CoresPage::validatePage()
     coresCount = dataWgt->rowCount();
     return AbstractPage::validatePage();
 }
+
+QJsonObject CoresPage::serializeObject(int row) const
+{
+    QJsonObject obj{};
+
+    obj.insert("index", row);
+    obj.insert("nBegin", dataWgt->data(row, 0).toInt());
+    obj.insert("nEnd", dataWgt->data(row, 1).toInt());
+    obj.insert("type", dataWgt->data(row, 2).toInt());
+
+    return obj;
+}
